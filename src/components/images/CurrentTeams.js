@@ -4,18 +4,17 @@ import { RadioButton } from 'react-native-paper';
   
 const styles = StyleSheet.create({ 
     container: { 
-        flex: 1, 
-        backgroundColor: '#F5F5F5', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'deepskyblue',
     }, 
     radioGroup: { 
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'space-around', 
+        backgroundColor: 'deepskyblue',
         marginTop: 20, 
         borderRadius: 8, 
-        backgroundColor: 'white', 
         padding: 16, 
         elevation: 4, 
         shadowColor: '#000', 

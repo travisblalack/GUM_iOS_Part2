@@ -7,7 +7,7 @@ import { SelectList } from 'react_native_simple_dropdown_select_list';
 const StartMoving= ({navigation})=>{
     const Stack = createNativeStackNavigator();
     const levels= ["Easy","Moderate","Vigorous"]
-    const levels1= ["Level 1: Session 1","Level 1: Session 2","Level 1: Session 3",]
+    const levels1= [{label:"Level 1: Session 1",value:0},"Level 1: Session 2","Level 1: Session 3",]
     
     return(
 
@@ -24,17 +24,15 @@ const StartMoving= ({navigation})=>{
 		console.log(selectedItem, index)
 	}}
 	buttonTextAfterSelection={(selectedItem,index) => {
-    
-    
-    if(selectedItem=="Easy"){
-      selectedItem=<Button title="Easy" onPress={()=> navigation.navigate("ModerateVideos")}></Button>
-          
-   return selectedItem
+    <Text>Proper Standing Posture(All Levels)</Text>
     
    
-  
+      levels1.map(level=>(
+      <level value={level.value}>{levels.value}</level>))
+     // selectedItem=<Button title="Easy" onPress={()=> navigation.navigate("ModerateVideos")}></Button>
 
-    }
+   return selectedItem
+    
   
 
     
@@ -83,7 +81,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 6,
   },
-
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'deepskyblue',
+  },
 
 })
 

@@ -4,6 +4,9 @@ import {Pressable,StyleSheet,Button,View,SafeAreaView,Alert,TextInput, Image,Tex
 import { Link, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, {useCallback} from 'react';
+import CustomButton from './CustomButton';
+import CustomButton1 from './CustomButton1';
+import CustomButton2 from './CustomButton2';
 
 import {
   Menu,
@@ -27,9 +30,9 @@ const TeachingDemos= ({navigation,text, iconName, value})=>{
       <View style = {styles.container}>
         <SafeAreaView>
           
-                    <Button title="Easy" onPress={()=> navigation.navigate("EasyVideos")}></Button>
-                   <Button title="Moderate" onPress={()=> navigation.navigate("ModerateVideos")}></Button>  
-                   <Button title="Vigorous" onPress={()=> navigation.navigate("VigorousVideos")}></Button> 
+                    <CustomButton1 title="Easy" onPress={()=> navigation.navigate("EasyVideos")}></CustomButton1>
+                   <CustomButton title="Moderate" onPress={()=> navigation.navigate("ModerateVideos")}></CustomButton>  
+                   <CustomButton2 title="Vigorous" onPress={()=> navigation.navigate("VigorousVideos")}></CustomButton2> 
                   <StatusBar style="auto"/>
                    </SafeAreaView>
                    
@@ -74,6 +77,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 30,
     flexDirection: "column",
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'deepskyblue',
   },
  });
 

@@ -1,244 +1,112 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import Video from 'react-native-video'
+import YoutubePlayer from 'react-native-youtube-iframe';
+import WebView from 'react-native-webview';
 import {View,Button,Text,SafeAreaView, StatusBar, Dimensions, StyleSheet, ScrollView, SelectInput,Image} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import { WebView } from 'react-native';
 import { useState } from 'react';
 import { SelectList } from 'react_native_simple_dropdown_select_list';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const ModerateVideos=({})=> {
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const video = React.useRef(null);
-  const [isPlaying, setIsPlaying] = React.useState(false); 
-  const [isPlaying1, setIsPlaying1] = React.useState(false);
-  const [isPlaying2, setIsPlaying2] = React.useState(false);
-  const [isPlaying3, setIsPlaying3] = React.useState(false);
-  const [isPlaying4, setIsPlaying4] = React.useState(false);
-  const [isPlaying5, setIsPlaying5] = React.useState(false);
-  const [isPlaying6, setIsPlaying6] = React.useState(false);
-  const [isPlaying7, setIsPlaying7] = React.useState(false);
-  const [isPlaying8, setIsPlaying8] = React.useState(false);
-  const [isPlaying9, setIsPlaying9] = React.useState(false);
-  const [isPlaying10, setIsPlaying10] = React.useState(false);
-  const [isPlaying11, setIsPlaying11] = React.useState(false);
-
-  const firstVideo = React.useRef(null);
-  const secondVideo = React.useRef(null);
-  const thirdVideo = React.useRef(null);
-  const fourthVideo = React.useRef(null);
-  const fifthVideo = React.useRef(null);
-  const sixthVideo = React.useRef(null);
-  const seventhVideo = React.useRef(null);
-  const eighthVideo = React.useRef(null);
-  const ninthVideo = React.useRef(null);
-
-  const tenthVideo = React.useRef(null);
-
-  const eleventhVideo = React.useRef(null);
-  const [status, setStatus] = React.useState({});
-  const [statusFirstVideo, setStatusFirstVideo] = React.useState({})
-  const [statusSecondVideo, setStatusSecondVideo] = React.useState({});
-  const [statusThirdVideo, setStatusThirdVideo] = React.useState({});
-  const [statusFourthVideo, setStatusFourthVideo] = React.useState({});
-  const [statusFifthVideo, setStatusFifthVideo] = React.useState({});
-  const [statusSixthVideo, setStatusSixthVideo] = React.useState({});
-  const [statusSeventhVideo, setStatusSeventhVideo] = React.useState({});
-  const [statusEighthVideo, setStatusEighthVideo] = React.useState({});
-  const [statusNinthVideo, setStatusNinthVideo] = React.useState({});
-  const [statusTenthVideo, setStatusTenthVideo] = React.useState({});
-  const [statusEleventhVideo, setStatusEleventhVideo] = React.useState({});
-  const [selectedValue, setSelectedValue] = useState('');
-
-   
   
   return (
     
-    <View style={styles.container}>
-        <ScrollView style={styles.scrollView}>
-      <Video
-  
-    ref={firstVideo}
-    style={styles.video}
-    paused={!isPlaying} 
-    useNativeControls
-    resizeMode="contain"
-    onPlaybackStatusUpdate={setStatusFirstVideo}
-   />       
-        <Text>Level 2 Session 1</Text>
-            <Button
-            
-                onPress={() => setIsPlaying(p => !p)}  
-                title={isPlaying ? 'Stop' : 'Play'}  
-            />  
     
-            
-        <Video
-  ref={secondVideo}
-  style={styles.video}
-  paused={!isPlaying1} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusSecondVideo}
- />         
- 
-            <Text>Level 2 Session 2(Strength Activity)</Text>
-          <Button
-              onPress={() => setIsPlaying1(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-      <Video
       
-  ref={thirdVideo}
-  style={styles.video}
-  paused={!isPlaying2} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusThirdVideo}
- />         
-             <Text>Level 2 Session 3(Healing Sounds)</Text>
-          <Button
-              onPress={() => setIsPlaying2(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-      <Video
-  ref={fourthVideo}
-  style={styles.video}
-  paused={!isPlaying3} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusThirdVideo}
- />         
-             <Text>Level 2 Session 4(Organ Health)</Text>
-          <Button
-              onPress={() => setIsPlaying3(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-     <Video
-  ref={fifthVideo}
-  style={styles.video}
-  paused={!isPlaying4} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusFourthVideo}
- />         
+        <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+      
+        <Text>Level 2 Session 1</Text>
+        <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'lJQ1NbzlaFs'}
+    />
+            <Text>Level 2 Session 2</Text>
+            <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'tyWZYK0-JX0'}
+    />
+             <Text>Level 2 Session 3</Text>
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'AIlvssmTTJc'} 
+          />        
+             <Text>Level 2 Session 4</Text>
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'mm8Stw7qPuU'} 
+          />         
              <Text>Level 2 Session 5</Text>
-          <Button
-              onPress={() => setIsPlaying4(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          />
-    <Video
-  ref={sixthVideo}
-  style={styles.video}
-  paused={!isPlaying5} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusFifthVideo}
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'aq79Tsz-na0'} 
  />         
              <Text>Level 2 Session 6</Text>
-          <Button
-              onPress={() => setIsPlaying5(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'YqV2EfLFyG4'} 
+ />              
+      <Text>Uniting Earth and Sky(All Levels)</Text>
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'dBuwLXUwUrw'} 
+ />         
           
-    <Video
-  ref={sixthVideo}
-  style={styles.video}
-  paused={!isPlaying5} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusFifthVideo}
- />         
-             <Text>Uniting Earth and Sky(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying6(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
- <Video
-  ref={sixthVideo}
-  style={styles.video}
-  paused={!isPlaying6} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusSixthVideo}
- />         
              <Text>Proper Standing Posture(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying7(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-<Video
-  ref={seventhVideo}
-  style={styles.video}
-  paused={!isPlaying7} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusSeventhVideo}
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'ajiGhRoez2g'} 
  />         
+        
              <Text>Joint Mobilization(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying8(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-<Video
-  ref={eighthVideo}
-  style={styles.video}
-  paused={!isPlaying8} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusEighthVideo}
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'wlzaS9q-XsU'} 
  />         
-             <Text>Joint Mobilization(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying9(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-<Video
-  ref={ninthVideo}
-  style={styles.video}
-  paused={!isPlaying9} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusNinthVideo}
+         
+             <Text>Chair Exercises(All Levels)</Text>
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'_RLwwEE-lI4'} 
  />         
+         
              <Text>Healing Sounds(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying10(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-<Video
-  ref={tenthVideo}
-  style={styles.video}
-  paused={!isPlaying10} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusTenthVideo}
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'av4HD-NkyWc'} 
  />         
+          
              <Text>Organ Clensing(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying10(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
-<Video
-  ref={eleventhVideo}
-  style={styles.video}
-  paused={!isPlaying10} 
-  useNativeControls
-  resizeMode="contain"
-  onPlaybackStatusUpdate={setStatusEleventhVideo}
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'7rtZtqLRkrI'} 
  />         
+        
              <Text>Vitality Cultivation(All Levels)</Text>
-          <Button
-              onPress={() => setIsPlaying10(p => !p)}  
-              title={isPlaying ? 'Stop' : 'Play'}  
-          /> 
+             <YoutubePlayer
+      height={300}
+      play={false}
+      videoId={'ZRefiU-jNwQ'} 
+ />         
+   
 
 </ScrollView>
 <View style={{marginTop:50}}>
-        <Text style={{marginTop:10,color:'gray'}}>{selectedValue}</Text>
+      
         
       </View>
 </View>
@@ -249,19 +117,15 @@ const ModerateVideos=({})=> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:'1000px',
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-    padding: '10px 60px'
+    backgroundColor: 'deepskyblue',
   },
- 
-  video: {
-    width: 300,
-    height: 500,
-  },
-  buttons: {
-    margin: 16
-  }
+video: {
+  width: 300,
+  height: 500,
+},
+buttons: {
+  margin: 16
+}
 });
 export default ModerateVideos

@@ -66,6 +66,11 @@ const JoinTeam = ({navigation})=>{
         borderRadius: 8,
         padding: 6,
       },
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'deepskyblue',
+      },
     
     
     })

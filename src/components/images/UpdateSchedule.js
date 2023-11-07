@@ -4,6 +4,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CustomButton from "./CustomButton";
 <Text>Update your moving schedule!</Text>
 export default function App() {
   const [date, setDate] = useState(new Date());
@@ -58,7 +59,7 @@ export default function App() {
         onChange={onChange}
       />
       
-       <Button title=" Add Time" onPress={()=> navigation.navigate("Home")}></Button>
+       <CustomButton title=" Add Time" onPress={()=> navigation.navigate("Home")}></CustomButton>
     </View>
     
   );
@@ -67,8 +68,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: 'deepskyblue',
+ 
+    
   },
 });

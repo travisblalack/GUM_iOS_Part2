@@ -4,6 +4,7 @@ import {Pressable,StyleSheet,Button,View,SafeAreaView,Alert,TextInput, Image,Tex
 import { Link, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, {useCallback} from 'react';
+import ImageButton from './ImageButton';
 
 import {
   Menu,
@@ -17,21 +18,18 @@ const link1 = 'https://www.paypal.com/paypalme/getupandmove?country.x=US&locale.
 const Home= ({navigation,text, iconName, value})=>{
   const [visible, setVisible] = React.useState(false);
 
-  const openMenu = () => setVisible(true);
-
-  const closeMenu = () => setVisible(false);
-
     const Stack = createStackNavigator();
     return(
       
       <View style = {styles.container}>
         <SafeAreaView>
-                    <Button title="Start Moving" onPress={()=> navigation.push("StartMoving")}></Button>
+                    <ImageButton title="start moving" onPress={()=> navigation.push("StartMoving")}></ImageButton>
                    <Button title="Teaching Demos" onPress={()=> navigation.navigate("TeachingDemos")}></Button>  
                    <Button title="Update Schedule" onPress={()=> navigation.navigate("UpdateSchedule")}></Button> 
                    <Button title="Teams" onPress={()=> navigation.navigate("Teams")}></Button> 
+                   <Button title="Image" onPress={()=> navigation.navigate("ImageButton")}></Button> 
                    
-                   
+                   <ImageButton title="start moving" onPress={()=> navigation.push("StartMoving")}></ImageButton>
                   <StatusBar style="auto"/>
                    </SafeAreaView>
                    <MenuProvider style={styles.container}>
@@ -40,7 +38,8 @@ const Home= ({navigation,text, iconName, value})=>{
          text="..."
          customStyles={{
            triggerWrapper: {
-             top: -20,
+             top: -365,
+             left:175
            },
          }}
        />
@@ -53,48 +52,15 @@ const Home= ({navigation,text, iconName, value})=>{
        </MenuOptions>
      </Menu>
    </MenuProvider>
-
-
     </View> 
-      
-             
-                  
-            
     );
 };
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    padding:2,
-    marginHorizontal: 16,
-    padding: '10px 60px',
-    borderColor:'blue'
-  },
-  wrapperCustom: {
-    borderRadius: 8,
-    padding: 6,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding:2,
-    marginHorizontal: 16,
-    borderColor:'blue'
-  },
-  wrapperCustom: {
-    borderRadius: 8,
-    padding: 6,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 30,
-    flexDirection: "column",
-  },
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: 'deepskyblue',
+    },
  });
 
 
