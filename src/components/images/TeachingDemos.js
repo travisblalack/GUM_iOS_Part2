@@ -25,10 +25,17 @@ const TeachingDemos= ({navigation,text, iconName, value})=>{
   const closeMenu = () => setVisible(false);
 
     const Stack = createNativeStackNavigator();
+    
     return(
+      
       
       <View style = {styles.container}>
         <SafeAreaView>
+        <Image 
+          style={styles.image}
+         source={require('./movingIcon.png')}
+         justifyContent={'right'}
+/>
           
                     <CustomButton1 title="Easy" onPress={()=> navigation.navigate("EasyVideos")}></CustomButton1>
                    <CustomButton title="Moderate" onPress={()=> navigation.navigate("ModerateVideos")}></CustomButton>  
@@ -65,6 +72,13 @@ const styles = StyleSheet.create({
     padding:2,
     marginHorizontal: 16,
     borderColor:'blue'
+  },
+  image:{
+    width:100,
+    height:100,
+    justifyContent: 'center',
+    right:-125,
+    top:-100
   },
   wrapperCustom: {
     borderRadius: 8,

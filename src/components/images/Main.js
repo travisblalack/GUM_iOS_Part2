@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomButton from './CustomButton';
 import {createAppContainer} from 'react=navigation';
+import CustomButton4 from './CustomButton4';
 
 const Main = ({navigation})=>{
   const firebaseConfig = {
@@ -29,46 +30,64 @@ const Main = ({navigation})=>{
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User signed in!');
+        
       })
       .catch(error => {
         console.error(error);
       });
   };
   const Stack = createStackNavigator();
-  
-
     return(
       <View style = {styles.container}>
-    
-      <View style={styles.logBox}>
-        
-      </View>
-    
-         <Image source={require('./newLogo.png')}/>
+        <View style = {styles.Image}>
+         <Image 
+           style={{ alignSelf: 'center' }}
+         source={require('./newLogo.png')}/>
+         </View>
           <Text>
           <Text>Welcome Back! Make sure your username and password are at least 5+ Characters</Text></Text>
           <>
       <TextInput
+        style={{
+          backgroundColor:'white',
+          height: 40,
+          borderWidth: 1,
+          
+        }}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
+        
       />
       <TextInput
+      style={{
+       
+        backgroundColor:'white',
+        height: 40,
+        padding:5,
+        borderWidth: 1,
+        bottom:-10
+      }}
+        
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
-      <CustomButton title="Sign In" onPress={handleSignIn}></CustomButton> 
+
     </>
-                          <CustomButton title=" Log In" onPress={()=> navigation.navigate("Home")}></CustomButton>
-                   <Button title="New to GUM? Sign Up" onPress={()=> navigation.navigate("SignUp")}></Button>   
-                   <View style={styles.container}>
-      <View style={styles.logBox}>
+    <View style = {styles.CustomButton4}>
+    <CustomButton4 title=" Log In" onPress={()=> navigation.navigate("Home")}></CustomButton4>
+                          </View>
+      <View style = {styles.Button}>
+     <Button title="New to GUM? Sign Up" onPress={()=> navigation.navigate("SignUp")}></Button> 
+     </View>  
+                  
+   
         <Text testID="pressable_press_console"></Text>
       </View>
-    </View> 
-              </View>
+   
+             
     );
 };
 const styles = StyleSheet.create({
@@ -77,6 +96,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'deepskyblue',
   },
-  
+  CustomButton4:{
+    bottom:-50
+  },
+  Button:{
+    bottom:-50,
+    text:'darkseagreen'
+  },
+  Image:{
+      top:-100,
+      height:100,
+     
+  }
 });
 export default Main

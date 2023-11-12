@@ -5,11 +5,11 @@ const CustomButton4 = (props) =>{
     return(
         <>
             <View style={styles.container}>
-            <TouchableOpacity style={styles.box} onPress={()=>{openURL('https://www.moodplan.net/skilldesmonats')}}>
-
-
-
-</TouchableOpacity>`
+                <TouchableOpacity 
+                    onPress={()=> props.onPress?.() }
+                    style={styles.button}>
+                    <Text style={styles.buttonText}>{props.title}</Text>
+                </TouchableOpacity>
             </View>
         </>
     )
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     button:{
         borderRadius:10,
         padding:10,
-        backgroundColor:'yellow',
+        backgroundColor:'darkseagreen',
         justifyContent:'center',
         alignItems:'center'
     },

@@ -6,19 +6,17 @@ import {  SafeAreaView,
     Image,
     TouchableOpacity,} from 'react-native'
 
-const ImageButton = (props) =>{
+const ImageButton1 = (props) =>{
     return (
-        
-          
               <View style={styles.container}>
                 <TouchableOpacity
                 onPress={()=> props.onPress?.() }
                   style={styles.button}
                   activeOpacity={0.5}>
-                  <Image source={require('./man-dancing.png')}/>
+                  <Image source={require('./camcorder.png')}/>
                    <Text style={styles.buttonText}>
                     
-            Start Moving
+            Teaching Demos
             </Text>
                 </TouchableOpacity>
            </View>
@@ -34,9 +32,9 @@ const ImageButton = (props) =>{
             borderRadius:30,
             padding:10,
             margin:10,
-            marginTop:10,
             width: 100,
             height: 100,
+            marginTop:10,
             backgroundColor:'darkseagreen',
             justifyContent:'left',
             alignItems:'center'
@@ -45,4 +43,8 @@ const ImageButton = (props) =>{
             color:'black'
         }
     })
-    export default ImageButton
+        
+        
+  
+    
+    export default ImageButton1

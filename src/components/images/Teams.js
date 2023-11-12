@@ -24,17 +24,23 @@ const OpenURLButton = ({url, children}) => {
 
   return <Button title={children} onPress={handlePress} />;
 };
-
+<Image
+   source={require('./newLogo.png')}
+   style={{width: 10, height: 10,
+   resizeMode:'contain',
+   justifyContent:'right'}}
+/>
 const Teams = ({navigation}) => {
   const Stack = createNativeStackNavigator();
   return(
     <View style = {styles.container}>
       
+      
       <SafeAreaView>
-                  <CustomButton title="Create Teams" url={link1}>Create Teams</CustomButton>
-                  <CustomButton title="Join Team" onPress={()=> navigation.push("JoinTeam")}></CustomButton>
-                  <CustomButton title="Current Teams" onPress={()=> navigation.push("CurrentTeams")}></CustomButton>
-                  <CustomButton title="About Teams" onPress={()=> navigation.push("AboutTeams")}></CustomButton>
+                  <CustomButton4 title="Create Teams" url={link1}>Create Teams</CustomButton4>
+                  <CustomButton4 title="Join Team" onPress={()=> navigation.push("JoinTeam")}></CustomButton4>
+                  <CustomButton4 title="Current Teams" onPress={()=> navigation.push("CurrentTeams")}></CustomButton4>
+                  <CustomButton4 title="About Teams" onPress={()=> navigation.push("AboutTeams")}></CustomButton4>
                   <OpenURLButton url={link2}>Paypal</OpenURLButton>
                
       
