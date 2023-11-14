@@ -1,27 +1,32 @@
 /* eslint-disable no-undef */
-import React from 'react';
-import Video from 'react-native-video'
 import YoutubePlayer from 'react-native-youtube-iframe';
-import WebView from 'react-native-webview';
-import {View,Button,Text,SafeAreaView, StatusBar, Dimensions, StyleSheet, ScrollView, SelectInput,Image} from 'react-native';
-import SelectDropdown from 'react-native-select-dropdown';
-import { useState } from 'react';
-import { SelectList } from 'react_native_simple_dropdown_select_list';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {View,Text,StyleSheet, ScrollView} from 'react-native';
+import { auth, firestore } from '../../../../../firebase';
+import { DocumentSnapshot, collection, getDocs } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+
 const EasyVideos=({})=> {
-  
+  console.log("rendering page")
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    const fetchVideos = async () => {
+        const querySnapshot = await firestore().collection("GuidingVideos").get();
+        const videoData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setVideos(videoData);
+    };
+    fetchVideos();
+}, []);
+    const firstVideoUrl = videos.length > 0 ? videos[0].YtUrl : null;
   return (
     
     <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
-      
+      <Text>{videos}</Text>
         <Text>Level 1 Session 1</Text>
         <YoutubePlayer
       height={300}
       play={false}
-      videoId={'t2uU6yaZXn8'}
+      videoId={firstVideoUrl}
     />
             <Text>Level 1 Session 2</Text>
             <YoutubePlayer

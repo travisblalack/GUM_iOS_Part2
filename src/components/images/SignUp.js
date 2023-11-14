@@ -4,9 +4,12 @@ import firebase from '@react-native-firebase/app';
 import {Pressable,StyleSheet,Button,TouchableOpacity,View,SafeAreaView,Alert,TextInput, Image,Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import CustomButton from './CustomButton';
 import {createAppContainer} from 'react=navigation';
 import CustomButton4 from './CustomButton4';
+import { doc, setDoc } from '@react-native-firebase/firestore';
+
 
 const SignUp = ({navigation})=>{
   const firebaseConfig = {
@@ -25,12 +28,30 @@ const SignUp = ({navigation})=>{
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSignIn = () => {
+  // Example function to initialize user data in Firestore
+  const initializeUserData = async (user, username) => {
+    try {
+      await setDoc(doc(db, "Users", user.uid), {
+        username: username,
+        points: 0,
+    });
+      console.log("User data initialized successfully");
+  } catch (error) {
+      console.error("Error initializing user data:", error);
+  }
+
+    
+};
+  
+  const signUp = () => {
     auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('User signed in!');
-        
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+       // const userCredential = createUserWithEmailAndPassword(auth, email, password)
+        const user = userCredential.user;
+        console.log("User " +email+ " succesfully signed up!");
+        navigation.navigate("Home")
+        Alert.alert("User " +email+ " succesfully signed up!");
       })
       .catch(error => {
         console.error(error);
@@ -47,66 +68,61 @@ const SignUp = ({navigation})=>{
           <Text>
           <Text>Welcome Back! Make sure your username and password are at least 5+ Characters</Text></Text>
           <>
-      <TextInput
-        style={{
-          backgroundColor:'white',
-          height: 40,
-          borderWidth: 1,
-          
-        }}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        
-      />
-      <TextInput
-      style={{
+          <TextInput
        
-        backgroundColor:'white',
-        height: 40,
-        padding:5,
-        borderWidth: 1,
-        bottom:-10
-      }}
-        
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-
-    </>
-    <View style = {styles.CustomButton4}>
-    <CustomButton4 title=" Log In" onPress={()=> navigation.navigate("Home")}></CustomButton4>
-                          </View>
-      <View style = {styles.Button}>
-     <Button title="New to GUM? Sign Up" onPress={()=> navigation.navigate("SignUp")}></Button> 
-     </View>  
-                  
+       style={{
+         backgroundColor:'white',
+         height: 40,
+         borderWidth: 1,}}
+       placeholder="Email"
+       value={email}
+       onChangeText={setEmail}
+     />
+       <TextInput
+        style={{
+         backgroundColor:'white',
+         height: 40,
+         borderWidth: 1,}}
+       placeholder="Password"
+       value={password}
+       onChangeText={setPassword}
+       secureTextEntry
+     />
+       
+ 
+       <CustomButton4  title="Sign Up" onPress={signUp} />
    
-        <Text testID="pressable_press_console"></Text>
-      </View>
-   
-             
-    );
-};
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'deepskyblue',
-  },
-  CustomButton4:{
-    bottom:-50
-  },
-  Button:{
-    bottom:-50,
-    text:'darkseagreen'
-  },
-  Image:{
-      top:-100,
-      height:100,
+     </>
      
-  }
-});
-export default SignUp
+ 
+       <View style = {styles.Button}>
+      <Button title="Alreay have an account? Sign in" onPress={()=> navigation.navigate("Main")}></Button> 
+      </View>  
+                   
+    
+         <Text testID="pressable_press_console"></Text>
+       </View>
+    
+              
+     );
+ };
+ const styles = StyleSheet.create({
+   container: {
+     flex: 1,
+     justifyContent: 'center',
+     backgroundColor: 'deepskyblue',
+   },
+   CustomButton4:{
+     bottom:-50
+   },
+   Button:{
+     bottom:-50,
+     text:'darkseagreen'
+   },
+   Image:{
+       top:-100,
+       height:100,
+      
+   }
+ });
+ export default SignUp

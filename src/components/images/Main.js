@@ -30,6 +30,7 @@ const Main = ({navigation})=>{
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User signed in!');
+        navigation.navigate("Home")
         
       })
       .catch(error => {
@@ -45,40 +46,35 @@ const Main = ({navigation})=>{
          source={require('./newLogo.png')}/>
          </View>
           <Text>
-          <Text>Welcome Back! Make sure your username and password are at least 5+ Characters</Text></Text>
+          <Text>Welcome Back! Remeber to stay signed in and never miss a workout!</Text></Text>
           <>
-      <TextInput
-        style={{
-          backgroundColor:'white',
-          height: 40,
-          borderWidth: 1,
-          
-        }}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        
-      />
-      <TextInput
-      style={{
+          <TextInput
        
-        backgroundColor:'white',
-        height: 40,
-        padding:5,
-        borderWidth: 1,
-        bottom:-10
-      }}
-        
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+       style={{
+         backgroundColor:'white',
+         height: 40,
+         borderWidth: 1,}}
+       placeholder="Email"
+       value={email}
+       onChangeText={setEmail}
+     />
+       <TextInput
+        style={{
+         backgroundColor:'white',
+         height: 40,
+         borderWidth: 1,}}
+       placeholder="Password"
+       value={password}
+       onChangeText={setPassword}
+       secureTextEntry
+     />
+      
 
+      <CustomButton4  title="Sign In" onPress={handleSignIn} />
+  
     </>
-    <View style = {styles.CustomButton4}>
-    <CustomButton4 title=" Log In" onPress={()=> navigation.navigate("Home")}></CustomButton4>
-                          </View>
+    
+
       <View style = {styles.Button}>
      <Button title="New to GUM? Sign Up" onPress={()=> navigation.navigate("SignUp")}></Button> 
      </View>  
