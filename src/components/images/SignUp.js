@@ -1,62 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import auth from '@react-native-firebase/auth';
-import firebase from '@react-native-firebase/app'; 
-import {Pressable,StyleSheet,Button,TouchableOpacity,View,SafeAreaView,Alert,TextInput, Image,Text} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+
+import {StyleSheet,Button,View,TextInput, Image,Text, Alert} from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import CustomButton from './CustomButton';
-import {createAppContainer} from 'react=navigation';
 import CustomButton4 from './CustomButton4';
-import { doc, setDoc } from '@react-native-firebase/firestore';
+import { auth,firestore } from '../../../../../firebase';
+import React, { useState } from 'react';
 
 
-const SignUp = ({navigation})=>{
-  const firebaseConfig = {
-    apiKey: "AIzaSyBfagTE-ImAy1n1J6rdNMHmD3E886H8oQk",
-    authDomain: "gum-android.firebaseapp.com",
-    projectId: "gum-android",
-    storageBucket: "gum-android.appspot.com",
-    messagingSenderId: "462866559865",
-    appId: "1:462866559865:web:533f931cb6a18cb31db5a8",
-    measurementId: "G-K88BJV87S3"
-  };
-  // Initialize Firebase
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  } 
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // Example function to initialize user data in Firestore
-  const initializeUserData = async (user, username) => {
-    try {
-      await setDoc(doc(db, "Users", user.uid), {
-        username: username,
-        points: 0,
-    });
-      console.log("User data initialized successfully");
-  } catch (error) {
-      console.error("Error initializing user data:", error);
-  }
+const SignUp = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const handleSignUp = () => {
+        auth().createUserWithEmailAndPassword(email, password,username)
+            .then((userCredential) => {
+                const uid = userCredential.user.uid;
+                // Initialize user data in Firestore
+                Alert.alert("User "+uid+"created!")
+                
+                firestore().collection('Users').doc(uid).set({
+                    username: username,
+                    points: 0,
+                })
+                .then(() => {
+                    console.log("User data initialized in Firestore");
+                    console.log(username);
+                    navigation.navigate("Home")
+                    Alert.alert("User "+username+" created!")
+                    console.log(username);
 
-    
-};
-  
-  const signUp = () => {
-    auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-       // const userCredential = createUserWithEmailAndPassword(auth, email, password)
-        const user = userCredential.user;
-        console.log("User " +email+ " succesfully signed up!");
-        navigation.navigate("Home")
-        Alert.alert("User " +email+ " succesfully signed up!");
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
+                })
+                .catch((error) => {
+                    console.error("Error initializing user data in Firestore:", error);
+                });
+            })
+            .catch((error) => {
+                console.error("Error creating user:", error);
+            });
+    };
+    <CustomButton4  title="Sign Up" onPress={handleSignUp} />
   const Stack = createStackNavigator();
     return(
       <View style = {styles.container}>
@@ -88,9 +69,19 @@ const SignUp = ({navigation})=>{
        onChangeText={setPassword}
        secureTextEntry
      />
+        <TextInput
+        style={{
+         backgroundColor:'white',
+         height: 40,
+         borderWidth: 1,}}
+       placeholder="User"
+       value={username}
+       onChangeText={setUsername}
+     
+     />
        
  
-       <CustomButton4  title="Sign Up" onPress={signUp} />
+       <CustomButton4  title="Sign Up" onPress={handleSignUp} />
    
      </>
      
