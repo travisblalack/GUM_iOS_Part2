@@ -26,7 +26,10 @@ const Home= ({navigation,text, iconName, value})=>{
     const Stack = createStackNavigator();
     return(
 
+      
+
      
+      
         
       <View style = {styles.container}>
         <Text>Longevity Points</Text>
@@ -45,7 +48,7 @@ const Home= ({navigation,text, iconName, value})=>{
       
         </View>
         
-       
+     
 
     );
 };

@@ -3,35 +3,35 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Alert,Linking } from 'react-native'; 
 import { Button, Menu, PaperProvider, Provider,Divider } from 'react-native-paper'; 
 import MenuButton from './MenuButton';
-const MenuExample = () => { 
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { getAuth, signOut } from "firebase/auth";
+const MenuExample = ({navigation}) => { 
   const [visible, setVisible] = useState(false); 
   
   const closeMenu = () => setVisible(false); 
   const openMenu = (v) => setVisible(true); 
+  const Stack = createNativeStackNavigator();
   return ( 
     <PaperProvider> 
       <View style={{
-          paddingTop: 5,
-          flexDirection: 'row',
+          paddingTop: 1,
+          flexDirection: 'right',
           justifyContent: 'right',
-          bottom:50,
-          left:50,
-          
-         
-
         }}>
+      
         <Menu 
           visible={visible} 
           onDismiss={closeMenu} 
           anchor={ 
             <Button onPress={openMenu}>...</Button>}> 
-            <Menu.Item 
-            onPress={() => { 
-                Linking.openURL("https://getupandmove.net")}}
-            
+            <Menu.Item onPress={() => { Linking.openURL("https://getupandmove.net")}}
             title="Website"
           /> 
-          <Menu.Item 
+            
+            
+
+          
+            <Menu.Item 
             onPress={() => { 
                 Linking.openURL("https://getupandmove.net/pages/contact.html")
             }} 

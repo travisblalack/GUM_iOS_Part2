@@ -16,18 +16,25 @@ const VigorousVideos=({})=> {
     };
     fetchVideos();
 }, []);
+    const firstVideoUrl = videos.length > 0 ? videos.YtUrl : null;
   return (
     
     <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
+          
         {videos.map(video => (
-                 <YoutubePlayer
-                 key={video.id}
-                 height={300}
-                 play={false}
-                 videoId={video.YtUrl}
-               />
+       <View>
+       <Text>Level 3 Session {video.Session}</Text>
+       
+        
+              <YoutubePlayer
+              key={video.id}
+              height={300}
+              play={false}
+              videoId={video.YtUrl}
               
+            />
+           </View>
             ))}
      
 

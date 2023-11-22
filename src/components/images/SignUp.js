@@ -6,38 +6,37 @@ import { auth,firestore } from '../../../../../firebase';
 import React, { useState } from 'react';
 
 
-const SignUp = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const handleSignUp = () => {
-        auth().createUserWithEmailAndPassword(email, password,username)
-            .then((userCredential) => {
-                const uid = userCredential.user.uid;
-                // Initialize user data in Firestore
-                Alert.alert("User "+uid+"created!")
-                
-                firestore().collection('Users').doc(uid).set({
-                    username: username,
-                    points: 0,
-                })
-                .then(() => {
-                    console.log("User data initialized in Firestore");
-                    console.log(username);
-                    navigation.navigate("Home")
-                    Alert.alert("User "+username+" created!")
-                    console.log(username);
-
-                })
-                .catch((error) => {
-                    console.error("Error initializing user data in Firestore:", error);
-                });
-            })
-            .catch((error) => {
-                console.error("Error creating user:", error);
-            });
-    };
-    <CustomButton4  title="Sign Up" onPress={handleSignUp} />
+const SignUp = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const handleSignUp = () => {
+      auth().createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+              // User is successfully created
+              
+              const uid = userCredential.user.uid;
+              // Initialize user data in Firestore
+              
+              firestore().collection('Users').doc(uid).set({
+                  username: username,
+                  points: 0,
+                  // ...any other initial fields
+                  
+              })
+              .then(() => {
+                  console.log("User "+username+ " initialized in Firestore");
+                  navigation.navigate("IntroVideo")
+              })
+              .catch((error) => {
+                  console.error("Error initializing user data in Firestore:", error);
+              });
+          })
+          .catch((error) => {
+              console.error("Error creating user:", error);
+          });
+  };
+    
   const Stack = createStackNavigator();
     return(
       <View style = {styles.container}>
@@ -84,13 +83,9 @@ const SignUp = () => {
        <CustomButton4  title="Sign Up" onPress={handleSignUp} />
    
      </>
-     
- 
        <View style = {styles.Button}>
       <Button title="Alreay have an account? Sign in" onPress={()=> navigation.navigate("Main")}></Button> 
       </View>  
-                   
-    
          <Text testID="pressable_press_console"></Text>
        </View>
     

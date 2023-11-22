@@ -9,19 +9,8 @@ import {createAppContainer} from 'react=navigation';
 import CustomButton4 from './CustomButton4';
 
 const Main = ({navigation})=>{
-  const firebaseConfig = {
-    apiKey: "AIzaSyBfagTE-ImAy1n1J6rdNMHmD3E886H8oQk",
-    authDomain: "gum-android.firebaseapp.com",
-    projectId: "gum-android",
-    storageBucket: "gum-android.appspot.com",
-    messagingSenderId: "462866559865",
-    appId: "1:462866559865:web:533f931cb6a18cb31db5a8",
-    measurementId: "G-K88BJV87S3"
-  };
+
   // Initialize Firebase
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  } 
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,6 +20,7 @@ const Main = ({navigation})=>{
       .then(() => {
         console.log('User signed in!');
         navigation.navigate("Home")
+        Alert.alert("User " +email+ " signed in!")
         
       })
       .catch(error => {

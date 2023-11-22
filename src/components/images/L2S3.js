@@ -5,13 +5,13 @@ import { auth, firestore } from '../../../../../firebase';
 import { DocumentSnapshot, collection, getDocs } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 
-const L1S2=({})=> {
+const L2S3=({})=> {
   console.log("rendering page")
   const [videos, setVideos] = useState([]);
   
   useEffect(() => {
     const fetchVideos = async () => {
-        const querySnapshot =  await firestore().collection('TeachingVideos').where("Level","==",1).where("Title","==","Proper Standing Posture").orderBy("Session").get();
+        const querySnapshot =  await firestore().collection('TeachingVideos').where("Level","==",2).where("Title","==","Joint Mobilization").orderBy("Session").get();
         const videoData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setVideos(videoData);
         console.log(querySnapshot)
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
     margin: 16
   }
 });
-export default L1S2
+export default L2S3

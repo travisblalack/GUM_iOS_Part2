@@ -5,16 +5,33 @@ import { useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton4 from "./CustomButton4";
+import PushNotificationIOS from "@react-native-community/push-notification-ios";
 export default function App() {
   
   const [date, setDate] = useState(new Date());
   const [reminder, setReminder] = useState('');
   const [open, setOpen] = useState(false);
+ 
+  var timeObject = new Date()     
+  var seconds = timeObject.getSeconds() + 10;
+  timeObject = timeObject + seconds;
+  var request = {
+    channelId: "channel-id",
+    id: "testNotify",
+    body: "Local notification!",
+  title: "Local Notification Title",
+  sound: "chime.aiff",
+  silent: false,
+  category: "SOME_CATEGORY",
+  userInfo:  useState.email,
+  fireDate: timeObject,}
+
+  let localNotification = PushNotificationIOS.addNotificationRequest(request);
 
   
 
 
-  const onChange = (e, selectedDate) => {
+  const onChange = (e, selectedDate,navigation) => {
     setDate(selectedDate);
   };
   const Stack = createNativeStackNavigator();
@@ -26,7 +43,8 @@ export default function App() {
       <DateTimePicker
       
         value={date}
-        mode={"time"}
+        
+        mode={""}
         is24Hour={true}
         onChange={onChange}
         style={styles.button}

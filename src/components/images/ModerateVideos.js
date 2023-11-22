@@ -21,14 +21,20 @@ const ModerateVideos=({})=> {
     
     <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
+          
         {videos.map(video => (
-                 <YoutubePlayer
-                 key={video.id}
-                 height={300}
-                 play={false}
-                 videoId={video.YtUrl}
-               />
+       <View>
+       <Text>Level 2 Session {video.Session}</Text>
+       
+        
+              <YoutubePlayer
+              key={video.id}
+              height={300}
+              play={false}
+              videoId={video.YtUrl}
               
+            />
+           </View>
             ))}
      
 

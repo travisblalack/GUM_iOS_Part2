@@ -11,9 +11,10 @@ const EasyVideos=({})=> {
   
   useEffect(() => {
     const fetchVideos = async () => {
-        const querySnapshot =  await firestore().collection('GuidingVideos').where("Level","==",1).orderBy("Session").get();
+      const querySnapshot =  await firestore().collection('GuidingVideos').where("Level","==",1).orderBy("Session").get();
         const videoData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setVideos(videoData);
+        console.log(querySnapshot)
     };
     fetchVideos();
 }, []);
@@ -23,15 +24,16 @@ const EasyVideos=({})=> {
     <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
         {videos.map(video => (
-          
-           
+          <View>
+          <Text>Level 1 Session {video.Session}</Text>
                  <YoutubePlayer
                  key={video.id}
                  height={300}
                  play={false}
                  videoId={video.YtUrl}
+                 
                />
-              
+              </View>
             ))}
      
 
@@ -53,9 +55,6 @@ const styles = StyleSheet.create({
       backgroundColor: 'deepskyblue',
     },
 
-
-
- 
   video: {
     width: 300,
     height: 500,
