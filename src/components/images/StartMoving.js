@@ -35,7 +35,8 @@ const StartMoving= ({navigation,text, iconName, value})=>{
           style={styles.image}
          source={require('./movingIcon.png')}
          justifyContent={'right'}
-/>
+         
+/><Text style={{textAlignVertical: "center",textAlign: "center",}}>Choose the intensity level for your workout!</Text>
           
                     <CustomButton1 title="Easy" onPress={()=> navigation.navigate("EasyList")}></CustomButton1>
                    <CustomButton title="Moderate" onPress={()=> navigation.navigate("ModerateList")}></CustomButton>  

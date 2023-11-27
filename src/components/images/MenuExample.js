@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'; 
 import { View, StyleSheet, Alert,Linking } from 'react-native'; 
 import { Button, Menu, PaperProvider, Provider,Divider } from 'react-native-paper'; 
@@ -17,6 +16,9 @@ const MenuExample = ({navigation}) => {
           paddingTop: 1,
           flexDirection: 'right',
           justifyContent: 'right',
+          right:150,
+          left:250,
+          bottom:300
         }}>
       
         <Menu 
@@ -27,9 +29,6 @@ const MenuExample = ({navigation}) => {
             <Menu.Item onPress={() => { Linking.openURL("https://getupandmove.net")}}
             title="Website"
           /> 
-            
-            
-
           
             <Menu.Item 
             onPress={() => { 
@@ -58,6 +57,3 @@ const MenuExample = ({navigation}) => {
 }; 
   
 export default MenuExample; 
-  
-
-

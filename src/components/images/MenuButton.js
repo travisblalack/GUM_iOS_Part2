@@ -27,15 +27,17 @@ const MenuButton = (props) =>{
         container: {
             flex: 1,
             justifyContent: 'center',
-            backgroundColor: 'deepskyblue',
             alignItems:'left',
-            left:220,
-            bottom:10
+            left:350,
+            bottom:100,
+            right:10,
+            top:-300
         },
         button:{
             borderRadius:10,
             justifyContent:'right',
-            alignItems:'center'
+            alignItems:'center',
+            right:1
         },
         buttonText:{
             color:'black'

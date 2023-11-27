@@ -35,7 +35,7 @@ const TeachingDemos= ({navigation,text, iconName, value})=>{
           style={styles.image}
          source={require('./movingIcon.png')}
          justifyContent={'right'}
-/>
+/><Text style={{textAlignVertical: "center",textAlign: "center",}}>Choose a mode </Text>
           
                     <CustomButton1 title="Easy" onPress={()=> navigation.navigate("EasyVideos")}></CustomButton1>
                    <CustomButton title="Moderate" onPress={()=> navigation.navigate("ModerateVideos")}></CustomButton>  

@@ -17,7 +17,7 @@ const SignUp = ({navigation}) => {
               
               const uid = userCredential.user.uid;
               // Initialize user data in Firestore
-              
+              // should be code to add points
               firestore().collection('Users').doc(uid).set({
                   username: username,
                   points: 0,
@@ -84,7 +84,7 @@ const SignUp = ({navigation}) => {
    
      </>
        <View style = {styles.Button}>
-      <Button title="Alreay have an account? Sign in" onPress={()=> navigation.navigate("Main")}></Button> 
+      <CustomButton4 title="Alreay have an account? Sign in" onPress={()=> navigation.navigate("Main")}></CustomButton4> 
       </View>  
          <Text testID="pressable_press_console"></Text>
        </View>
@@ -102,7 +102,7 @@ const SignUp = ({navigation}) => {
      bottom:-50
    },
    Button:{
-     bottom:-50,
+     bottom:10,
      text:'darkseagreen'
    },
    Image:{

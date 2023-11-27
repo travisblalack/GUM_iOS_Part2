@@ -66,7 +66,7 @@ const Main = ({navigation})=>{
     
 
       <View style = {styles.Button}>
-     <Button title="New to GUM? Sign Up" onPress={()=> navigation.navigate("SignUp")}></Button> 
+     <CustomButton4 title="New to GUM? Sign Up" onPress={()=> navigation.navigate("SignUp")}></CustomButton4> 
      </View>  
                   
    
@@ -83,10 +83,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'deepskyblue',
   },
   CustomButton4:{
-    bottom:-50
+    bottom:-35
   },
   Button:{
-    bottom:-50,
+    bottom:10,
     text:'darkseagreen'
   },
   Image:{
