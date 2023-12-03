@@ -3,10 +3,19 @@ import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState, useEffect } from 'react';
 import CustomButton4 from './CustomButton4';
-import ImageButton from './ImageButton';
 const EasyList=({navigation})=> {
+  const [visible, setVisible] = React.useState(false);
+
+  const [videos, setVideos] = useState([]);
+  const [userPoints, setUserPoints] = useState(null);
+  const [userName, setUserName] = useState(null);
+ // }, []);
   const Stack = createNativeStackNavigator();
+
   return (
+    
+    
+    
     
     <View style={styles.container}>
        <Text style={{textAlignVertical: "center",textAlign: "center",}}>Choose Session</Text>

@@ -2,17 +2,15 @@ import React from "react";
 import {TouchableOpacity, Text, View, StyleSheet} from 'react-native'
 
 const CustomButton1 = (props) =>{
-    return(
-        <>
-            <View style={styles.container}>
-                <TouchableOpacity 
-                    onPress={()=> props.onPress?.() }
-                    style={styles.button}>
-                    <Text style={styles.buttonText}>{props.title}</Text>
-                </TouchableOpacity>
-            </View>
-        </>
-    )
+return(
+        <View style={styles.container}>
+            <TouchableOpacity 
+                onPress={()=> props.onPress?.() }
+                style={styles.button}>
+                <Text style={styles.buttonText}>{props.title}</Text>
+            </TouchableOpacity>
+        </View>
+)
 }
 
 /// manambahkan action click

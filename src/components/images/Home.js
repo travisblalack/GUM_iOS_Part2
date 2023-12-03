@@ -1,5 +1,5 @@
 
-import {Pressable,StyleSheet,Button,View,SafeAreaView,Alert,TextInput, Image,Text,TouchableOpacity, StatusBar,PaperProvider,Linking} from 'react-native';
+import {Pressable,KeyboardAvoidingView,StyleSheet,Button,View,SafeAreaView,Alert,TextInput, Image,Text,TouchableOpacity, StatusBar,PaperProvider,Linking} from 'react-native';
 import firebase from '@react-native-firebase/app';
 import { Link, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -29,7 +29,7 @@ const link1 = 'https://www.paypal.com/paypalme/getupandmove?country.x=US&locale.
 
 const Home= ({navigation,text, iconName, value})=>{
   const [visible, setVisible] = React.useState(false);
-
+  const [inputValue, setInputValue] = React.useState("");
   const [videos, setVideos] = useState([]);
   const [userPoints, setUserPoints] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -44,6 +44,7 @@ const Home= ({navigation,text, iconName, value})=>{
             setUserPoints(userDoc.data().points);
             setUserName(userDoc.data().username);
             console.log(userDoc.data());
+            console.log(currentUser);
           } else {
             // Handle case where document doesn't exist
           }
@@ -61,16 +62,22 @@ const Home= ({navigation,text, iconName, value})=>{
 
     return(
       <View style = {styles.container}>
-      
-
+       
+    
          
       
       
       
         <Text>Longevity Points</Text>
         <Text>Streak: {userPoints}</Text>
-        <MenuExample></MenuExample>
+        <Image 
+          style={styles.image}
+         source={require('./newLogo.png')}
+         justifyContent={'center'}
+         
+         />
         
+ 
 
           
        
@@ -145,6 +152,12 @@ const styles = StyleSheet.create({
     left:100,
     width: 150,
     height: 110,
+
+  },
+  image:{
+    left:150,
+    bottom:-100,
+    right:100
     
 
 

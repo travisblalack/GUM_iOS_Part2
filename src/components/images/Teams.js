@@ -2,8 +2,6 @@
 import React, {useCallback} from 'react';
 import {StyleSheet,Button,View,SafeAreaView,Alert,TextInput, Image,Text,Linking,Pressable,TouchableOpacity} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import CustomButton from './CustomButton';
 import CustomButton4 from './CustomButton4';
 
 
@@ -26,28 +24,33 @@ const OpenURLButton = ({url, children}) => {
   return <Button title={children} onPress={handlePress} />;
   
 };
-<Image
-   source={require('./newLogo.png')}
-   style={{width: 10, height: 10,
-   resizeMode:'contain',
-   justifyContent:'right'}}
-/>
+
 const Teams = ({navigation}) => {
   const Stack = createNativeStackNavigator();
+
   return(
+    
     <View style = {styles.container}>
+        <Image
+   source={require('./newLogo.png')}
+   style={{left:140,bottom:50,
+   justifyContent:'right'}}
+/>
       
-      
+      <TouchableOpacity>
                   <View style = {styles.button}>
                   <Text style={styles.buttonText}>
-                  <OpenURLButton title="Create Teams" url={link1}>Create Teams</OpenURLButton></Text></View>
+                    
+                  <OpenURLButton  title="Create Teams" url={link1}>Create Teams</OpenURLButton></Text></View></TouchableOpacity>
                   <CustomButton4 title="Join Team" onPress={()=> navigation.push("JoinTeam")}></CustomButton4>
                   <CustomButton4 title="Current Teams" onPress={()=> navigation.push("CurrentTeams")}></CustomButton4>
                   <CustomButton4 title="About Teams" onPress={()=> navigation.push("AboutTeams")}></CustomButton4>
+                  <TouchableOpacity></TouchableOpacity>
                   <View style = {styles.button}>
                   
-                  <OpenURLButton url={link2}>Paypal</OpenURLButton>
-                  <Text style={styles.buttonText}></Text>
+                  <TouchableOpacity>
+                  <OpenURLButton url={link2}>Paypal</OpenURLButton></TouchableOpacity>
+                  
                </View>
       
               
@@ -66,14 +69,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'deepskyblue',
   },
 button:{
-    borderRadius:1,
+    borderRadius:8,
+    margin:10,
     padding:1,
     backgroundColor:'darkseagreen',
     justifyContent:'center',
     alignItems:'center'
+
 },
 buttonText:{
-  color:'#ggg' 
+  color:'black',
+  size:1
 }
 });
 

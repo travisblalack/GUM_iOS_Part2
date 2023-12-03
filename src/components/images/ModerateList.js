@@ -3,7 +3,7 @@ import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState, useEffect } from 'react';
 import CustomButton4 from './CustomButton4';
-import ImageButton from './ImageButton';
+
 const ModerateList=({navigation})=> {
   const Stack = createNativeStackNavigator();
   return (
@@ -27,7 +27,7 @@ const ModerateList=({navigation})=> {
 
 
 <View style={{marginTop:50}}>
-      
+   
         
       </View>
 

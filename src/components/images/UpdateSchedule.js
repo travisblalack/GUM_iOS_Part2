@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomButton4 from "./CustomButton4";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
-export default function App() {
+const UpdateSchedule=({navigation})=> {
   
   const [date, setDate] = useState(new Date());
   const [reminder, setReminder] = useState('');
@@ -26,12 +26,7 @@ export default function App() {
   userInfo:  useState.email,
   fireDate: timeObject,}
 
-  let localNotification = PushNotificationIOS.addNotificationRequest(request);
-
-  
-
-
-  const onChange = (e, selectedDate,navigation) => {
+  const onChange = (e, selectedDate) => {
     setDate(selectedDate);
   };
   const Stack = createNativeStackNavigator();
@@ -90,8 +85,8 @@ export default function App() {
         onChange={onChange}
         style={styles.button}
       />
-      
-       <CustomButton4 title=" Add Time" onPress={()=> navigation.navigate("Home")}></CustomButton4>
+      <CustomButton4 title=" Add Time" onPress={()=> navigation.navigate("Home")}></CustomButton4>
+       
     </View>
     
   );
@@ -112,5 +107,5 @@ const styles = StyleSheet.create({
       alignItems:'center'
  
     
-  },
-});
+    }
+  });export default UpdateSchedule

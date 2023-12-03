@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
 import firebase from '@react-native-firebase/app'; 
-import {Pressable,StyleSheet,Button,TouchableOpacity,View,SafeAreaView,Alert,TextInput, Image,Text} from 'react-native';
+import {Pressable,StyleSheet,Button,TouchableOpacity,View,SafeAreaView,Alert,TextInput, Image,Text, KeyboardAvoidingView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomButton from './CustomButton';
 import {createAppContainer} from 'react=navigation';
 import CustomButton4 from './CustomButton4';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 const Main = ({navigation})=>{
 
@@ -26,41 +28,63 @@ const Main = ({navigation})=>{
       .catch(error => {
         console.error(error);
       });
+    }
+    const resetPassword=()=>{
+      auth().sendPasswordResetEmail(email,password,auth)
+  .then(() => {
+    console.log("Password sent!");
+   Alert.alert("Passowrd reset email sent to "+email+"!");
+
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
   };
   const Stack = createStackNavigator();
     return(
+     
       <View style = {styles.container}>
         <View style = {styles.Image}>
+      
          <Image 
-           style={{ alignSelf: 'center' }}
+           style={{ alignSelf: 'center' ,top:75}}
          source={require('./newLogo.png')}/>
          </View>
           <Text>
           <Text>Welcome Back! Remeber to stay signed in and never miss a workout!</Text></Text>
           <>
+          <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}/>
           <TextInput
        
        style={{
+        
          backgroundColor:'white',
          height: 40,
-         borderWidth: 1,}}
+         borderWidth: 1,
+        margin:10}}
        placeholder="Email"
        value={email}
        onChangeText={setEmail}
+      
      />
        <TextInput
         style={{
          backgroundColor:'white',
          height: 40,
+         margin:10,
          borderWidth: 1,}}
        placeholder="Password"
        value={password}
        onChangeText={setPassword}
        secureTextEntry
+       
      />
       
 
       <CustomButton4  title="Sign In" onPress={handleSignIn} />
+       <CustomButton4  title="Reset Password" onPress={resetPassword} />
   
     </>
     

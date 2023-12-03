@@ -1,10 +1,11 @@
 import YoutubePlayer from 'react-native-youtube-iframe';
-import {View,Text,StyleSheet, ScrollView} from 'react-native';
+import {View,Text,StyleSheet, ScrollView,Alert} from 'react-native';
 import { auth, firestore } from '../../../../../firebase';
 import { DocumentSnapshot, collection, getDocs } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
+import TimerButton from './TimerButton';
 
-const VigorousVideos=({})=> {
+const VigorousVideos=({navigation})=> {
   console.log("rendering page")
   const [videos, setVideos] = useState([]);
   
@@ -16,7 +17,32 @@ const VigorousVideos=({})=> {
     };
     fetchVideos();
 }, []);
-    const firstVideoUrl = videos.length > 0 ? videos.YtUrl : null;
+const updatePoints = async () => {
+  try {
+    const currentUser = auth().currentUser;
+    if (currentUser) {
+      const userRef = firestore().collection('Users').doc(currentUser.uid);
+      const userDoc = await userRef.get();
+      if (userDoc.exists) {
+        // Use FieldValue.increment to update points
+        await userRef.update({
+          points: firestore.FieldValue.increment(6)
+        });
+        // Alert and navigation can be here or after the update operation
+        Alert.alert("User now has +6 points!");
+        navigation.navigate("Home");
+        // Logging updated data requires another get() call
+        const updatedUserDoc = await userRef.get();
+        console.log(updatedUserDoc.data());
+      } else {
+        // Handle case where document doesn't exist
+        console.error("User document does not exist");
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+};
   return (
     
     <View style={styles.container}>
@@ -40,7 +66,7 @@ const VigorousVideos=({})=> {
 
 </ScrollView>
 <View style={{marginTop:50}}>
-      
+<TimerButton title="Finish" onPress={updatePoints} />  
         
       </View>
 </View>

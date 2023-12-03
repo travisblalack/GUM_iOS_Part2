@@ -42,7 +42,7 @@ const SignUp = ({navigation}) => {
       <View style = {styles.container}>
         <View style = {styles.Image}>
          <Image 
-           style={{ alignSelf: 'center' }}
+           style={{ alignSelf: 'center',top:70 }}
          source={require('./newLogo.png')}/>
          </View>
           <Text>
@@ -53,7 +53,8 @@ const SignUp = ({navigation}) => {
        style={{
          backgroundColor:'white',
          height: 40,
-         borderWidth: 1,}}
+         borderWidth: 1,
+        margin:10}}
        placeholder="Email"
        value={email}
        onChangeText={setEmail}
@@ -62,7 +63,8 @@ const SignUp = ({navigation}) => {
         style={{
          backgroundColor:'white',
          height: 40,
-         borderWidth: 1,}}
+         borderWidth: 1,
+        margin:10}}
        placeholder="Password"
        value={password}
        onChangeText={setPassword}
@@ -72,7 +74,8 @@ const SignUp = ({navigation}) => {
         style={{
          backgroundColor:'white',
          height: 40,
-         borderWidth: 1,}}
+         borderWidth: 1,
+        margin:10}}
        placeholder="User"
        value={username}
        onChangeText={setUsername}
